@@ -231,6 +231,22 @@ class ParseQuery
 
         return $this;
     }
+    
+    /**
+     * Add a constraint to the query that requires a particular key's value
+     * determined by a regex
+     *
+     * @param string $key   The key to check.
+     * @param string $value The regex to match against
+     *
+     * @return ParseQuery Returns this query, so you can chain this call.
+     */
+    public function like($key, $value)
+    {
+        $this->addCondition($key, '$regex', $this->quote($value));
+
+        return $this;
+    }
 
     /**
      * Returns an associative array of the query constraints.
