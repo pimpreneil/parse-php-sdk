@@ -247,6 +247,20 @@ class ParseQuery
 
         return $this;
     }
+    
+    /**
+     * Set case insensitive option for regex queries
+     *
+     * @param string $key   The key to set the option to.
+     *
+     * @return ParseQuery Returns this query, so you can chain this call.
+     */
+    public function incensitiveMatch($key)
+    {
+        $this->addCondition($key, '$options', 'i');
+
+        return $this;
+    }
 
     /**
      * Returns an associative array of the query constraints.
